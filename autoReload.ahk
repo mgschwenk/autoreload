@@ -1,5 +1,4 @@
 #Warn, UseUnsetLocal, Off ; this is one of the exceptions where we don't want warnings for unset local vars
-#Persistent ; needed because the timer set by the bootstrapper below isn't fully recognized by the interpreter which thusly doesn't auto set persistence
 ; TODO: have the timer run as a seperate process and reload or restart (whichever is appropriate) client script via command line
 ; TODO: parse client script for includes to monitor
 autoReload()
