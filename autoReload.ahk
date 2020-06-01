@@ -22,7 +22,13 @@ autoReload()
 				startTime := currentScriptTime ; make sure we don't run into an endless loop of unsuccessful reloads
 				return
 			}
-		} else MsgBox, something went wrong here...
+		} else
+		{
+			if FileExist(A_ScriptFullPath) ; if there was an error other than the host script being deleted/moved
+				MsgBox, Something went wrong here, shutting down autoreload...
+			SetTimer, autoReload, Off ; monitoring is pointless if the host script no longer exists
+			return
+		}
 	} else ; bootstrapper starts here
 	{
 		; TODO check if the current instance is the only one running so we can deal with scripts that use #SingleInstance off
