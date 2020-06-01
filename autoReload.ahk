@@ -1,6 +1,6 @@
 #Warn, UseUnsetLocal, Off ; this is one of the exceptions where we don't want warnings for unset local vars
-; TODO: have the timer run as a seperate process and reload or restart (whichever is appropriate) client script via command line
-; TODO: parse client script for includes to monitor
+; TODO have the timer run as a seperate process and reload or restart (whichever is appropriate) client script via command line
+; TODO parse host script for includes to monitor
 autoReload()
 {
 	static startTime := autoReload() ; bootstraps the timer running this function at load time
@@ -10,7 +10,7 @@ autoReload()
 		FileGetTime, currentScriptTime, %A_ScriptFullPath%
 		if not ErrorLevel
 		{
-			if (startTime != currentScriptTime) ; the script has been modified since this instance got started
+			if (startTime != currentScriptTime) ; the host script has been modified since this instance got started
 			{
 				Critical ; it's go time so we take over
 				; first we see if there is a error message from a previous try to reload and close it
